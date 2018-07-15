@@ -88,7 +88,7 @@ str(d)
 
 d$word <- as.character(d$word)
 
-# Removing this character: �???T
+# Removing this character: â€™
 # Reference: https://stackoverflow.com/questions/24576075/gsub-apostrophe-in-data-frame-r
 # http://stat545.com/block022_regular-expression.html
 
@@ -96,13 +96,13 @@ d$word <- as.character(d$word)
 #word_col <- d$word
 #word_col
 
-# Remove the �???T character with the lapply function of the data frame d:
+# Remove the â€™ character with the lapply function of the data frame d:
 
-#d$word <- lapply(d$word, gsub, pattern = "�???T", replacement = "'")
+#d$word <- lapply(d$word, gsub, pattern = "â€™", replacement = "'")
 
-# Check each row and remove �???T in the word if there is any.
+# Check each row and remove â€™ in the word if there is any.
 for (j in (1:nrow(d))){
-  d[j, "word"] <- gsub(d[j, "word"],pattern = "�???T", replacement = "'")
+  d[j, "word"] <- gsub(d[j, "word"],pattern = "â€™", replacement = "'")
 }
 
 
@@ -170,11 +170,11 @@ head(survivor_wordcounts, n = 15)
 
 print(survivor_wordcounts[16:30, ])
 
-# Remove weird words such as iâ and â with filter function from dplyr:
+# Remove weird words such as iÃ¢ and Ã¢ with filter function from dplyr:
 # Use ! negation with str_detect from stringr package.
 # https://stackoverflow.com/questions/13043928/selecting-rows-where-a-column-has-a-string-like-hsa-partial-string-match
 
-survivor_wordcounts <- filter(survivor_wordcounts, !str_detect(word, "â"))
+survivor_wordcounts <- filter(survivor_wordcounts, !str_detect(word, "Ã¢"))
 
 # Print top 30 words:
 
@@ -231,17 +231,17 @@ survivor_bigrams_counts <- survivor_bigrams_counts %>%
 
 survivor_bigrams_counts
 
-# Remove the weird ã words from counts list:
+# Remove the weird Ã£ words from counts list:
 
-# Check each row and remove ã in the america bigram and change ã¢ to ' 
+# Check each row and remove Ã£ in the america bigram and change Ã£Â¢ to ' 
 
 for (j in (1:nrow(survivor_bigrams_counts))){
-  survivor_bigrams_counts[j, "bigram"] <- gsub(survivor_bigrams_counts[j, "bigram"], pattern = "ã", replacement = "")
-  survivor_bigrams_counts[j, "bigram"] <- gsub(survivor_bigrams_counts[j, "bigram"], pattern = "¢ ", replacement = "'")
+  survivor_bigrams_counts[j, "bigram"] <- gsub(survivor_bigrams_counts[j, "bigram"], pattern = "Ã£", replacement = "")
+  survivor_bigrams_counts[j, "bigram"] <- gsub(survivor_bigrams_counts[j, "bigram"], pattern = "Â¢ ", replacement = "'")
 }
 
 
-#survivor_bigrams_counts <- filter(survivor_bigrams_counts, !str_detect(bigram, "ã"))
+#survivor_bigrams_counts <- filter(survivor_bigrams_counts, !str_detect(bigram, "Ã£"))
 
 # Check again:
 
