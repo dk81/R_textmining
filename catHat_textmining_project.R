@@ -30,6 +30,9 @@ library(tm)
 # Reference: http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know
 # Ref 2: https://www.youtube.com/watch?v=JoArGkOpeU0
 
+# .txt File was saved on to desktop
+# Set the working directory and load the book into R offline:
+
 catHat_book <- readLines("cat_in_the_hat_textbook.txt")
 
 catHat_text <- Corpus(VectorSource(catHat_book))
